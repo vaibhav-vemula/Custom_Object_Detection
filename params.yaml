@@ -1,0 +1,17 @@
+train:
+  img_path: dataset/images 
+  annot_path: dataset/annotations.csv
+
+output:
+  modelsave_path: output/model.h5
+  loss_graph: output/lossplot.png
+  test_split: output/test.txt
+
+test:
+  model: output/model.h5
+  img_path: dataset/images 
+
+parameters:
+  initial_lr: 1e-4
+  epochs: 20
+  batch_size: 32
