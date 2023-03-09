@@ -48,7 +48,6 @@ f.close()
 vgg = VGG16(weights="imagenet", include_top=False, input_tensor=Input(shape=(224, 224, 3)))
 vgg.trainable = False
 vggout = vgg.output
-
 vggout = Flatten()(vggout)
 outDense = Dense(256, activation="relu")(vggout)
 outDense = Dense(128, activation="relu")(outDense)
@@ -56,7 +55,6 @@ outDense = Dense(64, activation="relu")(outDense)
 outDense = Dense(32, activation="relu")(outDense)
 outDense = Dense(4, activation="sigmoid")(outDense)
 model = Model(inputs=vgg.input, outputs=outDense)
-
 model.compile(loss="mse", optimizer=Adam(lr=params['parameters']['initial_lr']))
 print(model.summary())
 
